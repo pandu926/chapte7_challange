@@ -21,7 +21,7 @@
  *                              example: pandu@gmail.com
  *                           password:
  *                              type: string
- *                              example: pandu 
+ *                              example: Pandu@123
  * 
  *      responses:
  *              '200':
