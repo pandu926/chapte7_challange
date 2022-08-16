@@ -7,12 +7,8 @@ const getPost = async() => {
 const getPostByWriter = async({ user_id }) => {
     return await repo.getPostWriter({ user_id });
 }
-const getSingle = async(id, user_id) => {
-    const data = await repo.getSinglePost(id);
-    if (data.user_id == user_id) {
-        return data;
-    }
-    return "bukan milikmu";
+const getSingle = async(id) => {
+    return await repo.getSinglePost(id);
 
 }
 const addPost = async({ user_id, title, body, image }) => {

@@ -1,12 +1,10 @@
 const service = require("./post.service");
 
 const getPostAll = async(req, res) => {
-    const { writer, search, sort, limit } = req.query;
+    const { writer } = req.query;
     if (writer) {
         const user_id = writer;
-        const title = search;
-        console.log(writer, search, sort, limit);
-        const writerPost = await service.getPostByWriter({ user_id, });
+        const writerPost = await service.getPostByWriter({ user_id });
         return res.json(writerPost);
     }
 
@@ -16,8 +14,7 @@ const getPostAll = async(req, res) => {
 
 const getPostSingle = async(req, res) => {
     const { id } = req.params;
-    const user_id = req.auth.id;
-    const getpost = await service.getSingle(id, user_id);
+    const getpost = await service.getSingle(id);
     return res.json(getpost);
 }
 
