@@ -43,11 +43,18 @@
 
 /**
  * @swagger
- * /posts?writer={writerId}:
+ * /posts?writer=1:
  *  get:
  *    tags:
  *      - Post
  *    summary: API untuk untuk mendapatkan post dari penulis
+ *    parameters:
+ *        - in : query
+ *          name: writer
+ *          required: true
+ *          schema: 
+ *              type: integer
+ *          description: id penulis
  *    responses:
  *      '200':
  *        content:
