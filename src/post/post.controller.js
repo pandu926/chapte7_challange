@@ -40,9 +40,9 @@ const upadatePost = async(req, res) => {
     const user_id = req.auth.id;
     const {
         title,
-        body,
-        image
+        body
     } = req.body;
+    const image = req.file.filename;
     const post = await service.updatePost({
         id,
         user_id,
@@ -56,9 +56,10 @@ const upadatePost = async(req, res) => {
 const createPost = async(req, res) => {
     const {
         title,
-        body,
-        image
+        body
     } = req.body;
+    const image = req.file.filename;
+
     const user_id = req.auth.id;
     const post = await service.addPost({
         user_id,
@@ -66,7 +67,7 @@ const createPost = async(req, res) => {
         body,
         image
     });
-    return res.json(post);
+    return res.status(200).json(post);
 };
 const deletePost = async(req, res) => {
     const {

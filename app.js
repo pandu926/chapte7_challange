@@ -8,7 +8,9 @@ const swaggerDocument = require('./src/config/swagger');
 const postRoute = require("./src/post/post.route");
 const fs = require("fs");
 const https = require('https')
+const path = require("path");
 const cors = require("cors");
+
 
 // ssl 
 const options = {
@@ -18,6 +20,7 @@ const options = {
 
 app.use(cors());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(userRoute);
@@ -28,7 +31,9 @@ app.use(postRoute);
 app.get("/", (req, res) => {
     res.send("berhasil");
 })
-
-https.createServer(options, app).listen(port, function() {
-    console.log("Express server listening on port " + port);
-});
+app.listen(port, () => {
+        console.log("listen " + port);
+    })
+    // https.createServer(options, app).listen(port, function() {
+    //     console.log("Express server listening on port " + port);
+    // });
