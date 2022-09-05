@@ -19,6 +19,7 @@ postRoute.get("/post", controller.getPostAll);
 postRoute.get("/post/:id", controller.getPostSingle);
 postRoute.post("/post/create", tokenVerification, upload.single("image"), controller.createPost);
 postRoute.put("/post/update/:id", tokenVerification, upload.single("image"), controller.upadatePost);
+postRoute.delete("/post/delete/:id", tokenVerification, controller.deletePost);
 
 
 

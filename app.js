@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 80;
+const port = 443;
 const userRoute = require("./src/user/user.route");
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./src/config/swagger');
@@ -31,9 +31,7 @@ app.use(postRoute);
 app.get("/", (req, res) => {
     res.send("berhasil");
 })
-app.listen(port, () => {
-        console.log("listen " + port);
-    })
-    // https.createServer(options, app).listen(port, function() {
-    //     console.log("Express server listening on port " + port);
-    // });
+
+https.createServer(options, app).listen(port, function() {
+    console.log("Express server listening on port " + port);
+});
